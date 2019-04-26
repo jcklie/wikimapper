@@ -218,7 +218,7 @@ FAQ
 How does the parsing of the dump work?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`jamesmishra <https://github.com/jamesmishra/mysqldump-to-csv>`_ has noticed that
+`jamesmishra <https://github.com/jamesmishra/mysqldump-to-csv>`__ has noticed that
 SQL dumps from Wikipedia almost look like CSV. He provides some basic functions
 to parse insert statements into tuples. We then use the Wikipedia SQL page
 dump to get the mapping between title and internal id, page props to get
@@ -246,7 +246,7 @@ So I created this package to do the mapping offline instead.
 Acknowledgements
 ----------------
 
-I am very thankful for `jamesmishra <https://github.com/jamesmishra>`_  to provide
-`mysqldump-to-csv <https://github.com/jamesmishra/mysqldump-to-csv>`_ . Also,
-`mbugert <https://github.com/mbugert>`_ helped me tremendously understanding
+I am very thankful for `jamesmishra <https://github.com/jamesmishra>`__  to provide
+`mysqldump-to-csv <https://github.com/jamesmishra/mysqldump-to-csv>`__ . Also,
+`mbugert <https://github.com/mbugert>`__ helped me tremendously understanding
 Wikipedia dumps and giving me the idea on how to map.
