@@ -113,7 +113,7 @@ setup(
     python_requires=REQUIRES_PYTHON,
     url=HOMEPAGE,
     packages=find_packages(exclude="tests"),
-    keywords="uima dkpro cas xmi",
+    keywords="wikidata wikipedia wiki kb knowledge-base",
 
     project_urls={
         "Bug Tracker": "https://github.com/jcklie/wikimapper/issues",
