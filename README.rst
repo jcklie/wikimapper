@@ -143,7 +143,7 @@ the command line tool that ships with this package. It can be e.g. invoked by
 
 .. code:: bash
 
-    $ wikimapper create --dumpname enwiki-latest --dumpdir data --target data/index_enwiki-latest.db
+    $ wikimapper create enwiki-latest --dumpdir data --target data/index_enwiki-latest.db
 
 This creates an index for the previously downloaded dump and saves it in ``data/index_enwiki-latest.db``.
 Use ``wikimapper create --help`` for a full description of the tool.
@@ -153,11 +153,7 @@ Precomputed indices
 
 .. _precomputed:
 
-+-----------+------+------+
-| Wiki name | Link | Size |
-+===========+======+======+
-| en        |      |      |
-+-----------+------+------+
+Several precomputed indices can be found `here <https://public.ukp.informatik.tu-darmstadt.de/wikimapper/>`_ .
 
 Command line interface
 ----------------------

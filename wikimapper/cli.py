@@ -48,7 +48,7 @@ def main():
         "create", help="Use a previously downloaded Wikipedia dump to create a custom index."
     )
     parser_create.add_argument(
-        "--dumpname",
+        "dumpname",
         type=_dump_name,
         help='Name of the Wikipedia dump, e.g. "enwiki-latest" for the latest English Wikipedia dump or "barwiki-20190420" for a dump from the Bavarian Wikipedia taken at the 20th April, 2019',
     )
