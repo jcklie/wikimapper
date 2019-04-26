@@ -31,7 +31,8 @@ test_dependencies = [
 dev_dependencies = [
     "black",
     "twine",
-    "pygments"
+    "pygments",
+    "wheel"
 ]
 
 doc_dependencies = []
