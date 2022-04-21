@@ -12,7 +12,7 @@ BAVARIAN_PARAMS = [
     pytest.param("Quadrátkilometa", "Q25343", id="Has redirect"),
     pytest.param("D'_boarische_Woocha", "Q20616808", id="Has special character"),
     pytest.param("I am not in the Wiki", None, id="Title not in the wiki"),
-    pytest.param("Pergentinus_und_Laurentinus", None, id="In the index, but not mapped"),
+    pytest.param("tungsten", None, id="In the index, but not mapped"),
 ]
 
 
