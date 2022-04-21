@@ -1,6 +1,5 @@
 import pytest
 
-
 BAVARIAN_PARAMS = [
     pytest.param("Stoaboog", "Q168327"),
     pytest.param("Wechslkrod", "Q243242"),

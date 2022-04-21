@@ -30,6 +30,7 @@ test_dependencies = [
 
 dev_dependencies = [
     "black",
+    "isort",
     "twine",
     "pygments",
     "wheel"

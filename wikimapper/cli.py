@@ -2,8 +2,8 @@ import argparse
 import logging
 import os
 
+from wikimapper import WikiMapper, create_index, download_wikidumps
 from wikimapper.__version__ import __version__
-from wikimapper import download_wikidumps, create_index, WikiMapper
 
 
 def main():
@@ -126,7 +126,7 @@ def main():
 
 
 def _dir_path(path) -> str:
-    """ Checks whether `path` is a valid path to a directory. """
+    """Checks whether `path` is a valid path to a directory."""
     if os.path.isdir(path):
         return path
     else:
@@ -134,7 +134,7 @@ def _dir_path(path) -> str:
 
 
 def _dump_name(name) -> str:
-    """ Checks whether `name` is a valid Wikipedia dump name. """
+    """Checks whether `name` is a valid Wikipedia dump name."""
     parts = name.split("-")
     err = lambda: argparse.ArgumentTypeError(f"dumpname: [{name}] is not a valid dump name")
 

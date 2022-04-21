@@ -3,11 +3,11 @@
 """
 
 import csv
+import ctypes as ct
 import gzip
 import logging
 import os
 import sqlite3
-import ctypes as ct
 
 _logger = logging.getLogger(__name__)
 
@@ -91,7 +91,7 @@ def _parse_values(values):
 
 
 def create_index(dumpname: str, path_to_dumps: str, path_to_db: str = None) -> str:
-    """ Creates an index mapping Wikipedia page titles to Wikidata IDs and vice versa.
+    """Creates an index mapping Wikipedia page titles to Wikidata IDs and vice versa.
     This requires a previously downloaded dump `dumpname` in `path_to_dumps`.
 
     Args:
