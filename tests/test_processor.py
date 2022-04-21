@@ -3,7 +3,6 @@ import sqlite3
 
 from wikimapper import create_index
 
-from tests.fixtures import *
 
 
 def test_create_index(tmpdir, bavarian_wiki_dump):

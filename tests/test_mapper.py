@@ -1,6 +1,5 @@
 import pytest
 
-from tests.fixtures import *
 
 BAVARIAN_PARAMS = [
     pytest.param("Stoaboog", "Q168327"),
