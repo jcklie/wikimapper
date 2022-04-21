@@ -3,13 +3,13 @@ from typing import List, Optional
 
 
 class WikiMapper:
-    """ Uses a precomputed database created by `create_wikipedia_wikidata_mapping_db`. """
+    """Uses a precomputed database created by `create_wikipedia_wikidata_mapping_db`."""
 
     def __init__(self, path_to_db: str):
         self._path_to_db = path_to_db
 
     def title_to_id(self, page_title: str) -> Optional[str]:
-        """ Given a Wikipedia page title, returns the corresponding Wikidata ID.
+        """Given a Wikipedia page title, returns the corresponding Wikidata ID.
 
         The page title is the last part of a Wikipedia url **unescaped** and spaces
         replaced by underscores , e.g. for `https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem`,
@@ -35,7 +35,7 @@ class WikiMapper:
             return None
 
     def url_to_id(self, wiki_url: str) -> Optional[str]:
-        """ Given an URL to a Wikipedia page, returns the corresponding Wikidata ID.
+        """Given an URL to a Wikipedia page, returns the corresponding Wikidata ID.
 
         This is just a convenience function. It is not checked whether the index and
         URL are from the same dump.
@@ -53,7 +53,7 @@ class WikiMapper:
         return self.title_to_id(title)
 
     def id_to_titles(self, wikidata_id: str) -> List[str]:
-        """ Given a Wikidata ID, return a list of corresponding pages that are linked to it.
+        """Given a Wikidata ID, return a list of corresponding pages that are linked to it.
 
         Due to redirects, the mapping from Wikidata ID to Wikipedia title is not unique.
 

@@ -1,17 +1,15 @@
 from collections import namedtuple
-import os
 
 import pytest
 
-from wikimapper import download_wikidumps, create_index, WikiMapper
-
+from wikimapper import WikiMapper, create_index, download_wikidumps
 
 Wiki = namedtuple("Wiki", ["dumpname", "path"])
 
 
 @pytest.fixture(scope="package")
 def bavarian_wiki_dump(tmpdir_factory) -> Wiki:
-    """ We download the Bavarian Wiki, as it is quite small. """
+    """We download the Bavarian Wiki, as it is quite small."""
 
     dumpname = "barwiki-latest"
     path = tmpdir_factory.mktemp("dumps").strpath

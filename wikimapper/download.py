@@ -14,7 +14,7 @@ def _report_hook(count: int, block_size: int, total_size: int):
 
 
 def _download_file(url: str, target: str, overwrite: bool):
-    """ Downloads the content identified by `url` and saves it in `target`."""
+    """Downloads the content identified by `url` and saves it in `target`."""
     if os.path.exists(target) and not overwrite:
         _logger.info("[%s] already exists, skipping downloading [%s]!", target, url)
         return
@@ -29,7 +29,7 @@ def _download_file(url: str, target: str, overwrite: bool):
 def download_wikidumps(
     dumpname: str, path: str, mirror: str = "https://dumps.wikimedia.org/", overwrite: bool = False
 ):
-    """ Downloads pages, page props and redirect SQL dumps for the dump
+    """Downloads pages, page props and redirect SQL dumps for the dump
     specified by `dumpname` to the folder `path`. If `overwrite` is true,
     then it is downloaded again even if the files already exist.
 
