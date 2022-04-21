@@ -22,10 +22,7 @@ REQUIRES_PYTHON = ">=3.5.0"
 install_requires=[]
 
 test_dependencies = [
-    "tox",
     "pytest",
-    "codecov",
-    "pytest-cov",
 ]
 
 dev_dependencies = [
