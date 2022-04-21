@@ -1,12 +1,6 @@
 wikimapper
 ==========
 
-.. image:: https://travis-ci.org/jcklie/wikimapper.svg?branch=master
-  :target: https://travis-ci.org/jcklie/wikimapper
-
-.. image:: https://codecov.io/gh/jcklie/wikimapper/branch/master/graph/badge.svg
-  :target: https://codecov.io/gh/jcklie/wikimapper
-
 .. image:: https://img.shields.io/pypi/l/wikimapper.svg
   :alt: PyPI - License
   :target: https://pypi.org/project/wikimapper/
