@@ -1,7 +1,0 @@
-[run]
-source=wikimapper
-omit=
-    setup.py
-    wikimapper/__init__.py
-    wikimapper/__version__.py
-    wikimapper/cli.py
