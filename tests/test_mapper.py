@@ -38,7 +38,7 @@ def test_url_to_id(bavarian_wiki_mapper, page_title: str, expected: str):
     [
         ("Q1027119", ["Gallesium", "Gallese", "Gallesium_(Titularbistum)"]),
         ("Q102904", ["Vulkanologie", "Vuikanologie"]),
-        ("Q10296976", ["Stootsfiahra_52", "Liste_der_Staatsoberhäupter_52"]),
+        ("Q160525", ['Brezn', 'Breze', 'Brezel', 'Brezen']),
         ("12345678909876543210", []),
     ],
 )
