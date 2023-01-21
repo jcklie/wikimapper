@@ -186,8 +186,9 @@ def create_index(dumpname: str, path_to_dumps: str, path_to_db: str = None) -> s
     # Parse the Wikipedia redirect dump; fill in missing Wikidata ids
     # https://www.mediawiki.org/wiki/Manual:Redirect_table
     _logger.info("Parsing redirects dump")
-    with gzip.open(redirects_dump, "rt", encoding="utf-8", newline="\n") as f:
+    with gzip.open(redirects_dump, "r") as f:
         for line in f:
+            line = line.decode("utf-8", "ignore")
             # Look for an INSERT statement and parse it.
             if not _is_insert(line):
                 continue
