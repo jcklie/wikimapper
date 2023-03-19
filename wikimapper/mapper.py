@@ -7,6 +7,7 @@ class WikiMapper:
 
     def __init__(self, path_to_db: str):
         self._path_to_db = path_to_db
+        self.conn = sqlite3.connect(self._path_to_db)
 
     def title_to_id(self, page_title: str) -> Optional[str]:
         """Given a Wikipedia page title, returns the corresponding Wikidata ID.
@@ -24,10 +25,8 @@ class WikiMapper:
 
         """
 
-        with sqlite3.connect(self._path_to_db) as conn:
-            c = conn.cursor()
-            c.execute("SELECT wikidata_id FROM mapping WHERE wikipedia_title=?", (page_title,))
-            result = c.fetchone()
+        c = self.conn.execute("SELECT wikidata_id FROM mapping WHERE wikipedia_title=?", (page_title,))
+        result = c.fetchone()
 
         if result is not None and result[0] is not None:
             return result[0]
@@ -65,11 +64,9 @@ class WikiMapper:
 
         """
 
-        with sqlite3.connect(self._path_to_db) as conn:
-            c = conn.cursor()
-            c.execute(
-                "SELECT DISTINCT wikipedia_title FROM mapping WHERE wikidata_id =?", (wikidata_id,)
-            )
-            results = c.fetchall()
+        c = self.conn.execute(
+            "SELECT DISTINCT wikipedia_title FROM mapping WHERE wikidata_id =?", (wikidata_id,)
+        )
+        results = c.fetchall()
 
         return [e[0] for e in results]
