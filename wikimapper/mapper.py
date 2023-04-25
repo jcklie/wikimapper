@@ -70,3 +70,47 @@ class WikiMapper:
         results = c.fetchall()
 
         return [e[0] for e in results]
+
+    def wikipedia_id_to_id(self, wikipedia_id: int) -> Optional[str]:
+        """Given a Wikipedia ID (in other words Page ID), returns the corresponding Wikidata ID.
+
+        Wikipedia ID is another way to access Wikipedia Article and is widely used in Wikipedia dumps.
+        For example, for the ID `18630637` we can use the link - `http://en.wikipedia.org/?curid=18630637`.
+
+        Args:
+            wikipedia_id (int): The Wikipedia ID to map, e.g. `18630637`
+
+        Returns:
+            Optional[str]: If a mapping found for `wikipedia_id`, then return
+                           it, else return `None`.
+        """
+
+        c = self.conn.execute(
+            "SELECT wikidata_id FROM mapping WHERE wikipedia_id=?", (wikipedia_id,)
+        )
+        result = c.fetchone()
+
+        if result is not None and result[0] is not None:
+            return result[0]
+        else:
+            return None
+
+    def id_to_wikipedia_id(self, wikidata_id: str) -> List[str]:
+        """Given a Wikidata ID, returns the corresponding list of Wikipedia IDs (or Page IDs).
+
+        Due to redirects, there can be multiple Wikipedia IDs for the same Wikidata item.
+
+        Args:
+            wikidata_id (str): The Wikidata ID to map, e.g. `18630637`
+
+        Returns:
+            List[str]: A list of Wikipedia IDs linked to the given Wikidata ID.
+        """
+
+        # no need for `DISTINCT` as `wikipedia_id` is a PRIMARY KEY, thus we have no duplicates there
+        c = self.conn.execute(
+            "SELECT wikipedia_id FROM mapping WHERE wikidata_id=?", (wikidata_id,)
+        )
+        results = c.fetchall()
+
+        return [e[0] for e in results]

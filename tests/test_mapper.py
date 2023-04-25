@@ -1,4 +1,5 @@
 import pytest
+from typing import List
 
 BAVARIAN_PARAMS = [
     pytest.param("Stoaboog", "Q168327"),
@@ -48,3 +49,48 @@ def test_id_to_titles(bavarian_wiki_mapper, wikidata_id: str, expected: str):
     titles = mapper.id_to_titles(wikidata_id)
 
     assert set(titles) == set(expected)
+
+
+@pytest.mark.parametrize(
+    "wikipedia_id, expected",
+    [
+        (24520, "Q168327"),   # Stoaboog
+        (8535, "Q243242"),    # Wechslkrod
+        (32218, None),        # Wechslkrod, but namespace 1, so cannot be in the database
+        (32176, "Q2567666"),  # Wickiana
+        (32252, "Q123034"),   # Ulrich_Zwingli
+        (32311, "Q1821239"),  # Jingstes_Gricht
+        (2143, "Q251022"),    # Sånkt_Johann_im_Pongau
+        (2217, "Q25343"),     # Quadrátkilometa
+        (4209, "Q20616808"),  # D'_boarische_Woocha
+        (1997, "Q160525"),    # Brezn
+        (5740, None),         # Brezn, but namespace 1, so cannot be in the database
+        (24100, "Q160525"),   # Brezel
+        (28193, "Q160525"),   # Brezen
+        (105208, "Q102904"),  # Vulkanologie
+        (105288, "Q102904"),  # Vuikanologie
+    ]
+)
+def test_wikipedia_id_to_id(bavarian_wiki_mapper, wikipedia_id: int, expected: str):
+    mapper = bavarian_wiki_mapper
+
+    wikidata_id = mapper.wikipedia_id_to_id(wikipedia_id)
+
+    assert wikidata_id == expected
+
+
+@pytest.mark.parametrize(
+    "wikidata_id, expected",
+    [
+        ("Q1027119", [105563, 105564, 105565]),   # Gallesium, Gallese, Gallesium_(Titularbistum)
+        ("Q102904", [105208, 105288]),            # Vulkanologie, Vuikanologie
+        ("Q160525", [1997, 2778, 24100, 28193]),  # Brezn, Breze, Brezel, Brezen
+        ("12345678909876543210", []),
+    ]
+)
+def test_id_to_wikipedia_id(bavarian_wiki_mapper, wikidata_id: str, expected: List[int]):
+    mapper = bavarian_wiki_mapper
+
+    wikipedia_ids = mapper.id_to_wikipedia_id(wikidata_id)
+
+    assert set(wikipedia_ids) == set(expected)
