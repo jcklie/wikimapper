@@ -95,16 +95,16 @@ class WikiMapper:
         else:
             return None
 
-    def id_to_wikipedia_id(self, wikidata_id: str) -> List[str]:
+    def id_to_wikipedia_id(self, wikidata_id: str) -> List[int]:
         """Given a Wikidata ID, returns the corresponding list of Wikipedia IDs (or Page IDs).
 
         Due to redirects, there can be multiple Wikipedia IDs for the same Wikidata item.
 
         Args:
-            wikidata_id (str): The Wikidata ID to map, e.g. `18630637`
+            wikidata_id (str): The Wikidata ID to map, e.g. `Q7553`
 
         Returns:
-            List[str]: A list of Wikipedia IDs linked to the given Wikidata ID.
+            List[int]: A list of Wikipedia IDs linked to the given Wikidata ID.
         """
 
         # no need for `DISTINCT` as `wikipedia_id` is a PRIMARY KEY, thus we have no duplicates there
