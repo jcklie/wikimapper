@@ -95,7 +95,7 @@ class WikiMapper:
         else:
             return None
 
-    def id_to_wikipedia_id(self, wikidata_id: str) -> List[int]:
+    def id_to_wikipedia_ids(self, wikidata_id: str) -> List[int]:
         """Given a Wikidata ID, returns the corresponding list of Wikipedia IDs (or Page IDs).
 
         Due to redirects, there can be multiple Wikipedia IDs for the same Wikidata item.

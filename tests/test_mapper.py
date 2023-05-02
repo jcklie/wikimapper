@@ -88,9 +88,9 @@ def test_wikipedia_id_to_id(bavarian_wiki_mapper, wikipedia_id: int, expected: s
         ("12345678909876543210", []),
     ]
 )
-def test_id_to_wikipedia_id(bavarian_wiki_mapper, wikidata_id: str, expected: List[int]):
+def test_id_to_wikipedia_ids(bavarian_wiki_mapper, wikidata_id: str, expected: List[int]):
     mapper = bavarian_wiki_mapper
 
-    wikipedia_ids = mapper.id_to_wikipedia_id(wikidata_id)
+    wikipedia_ids = mapper.id_to_wikipedia_ids(wikidata_id)
 
     assert set(wikipedia_ids) == set(expected)
