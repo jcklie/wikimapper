@@ -105,6 +105,32 @@ or from the command line via
 Mapping id to title can lead to more than one result, as some pages in Wikipedia are
 redirects, all linking to the same Wikidata item.
 
+Map Wikipedia id to Wikidata id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: python
+
+    from wikimapper import WikiMapper
+
+    mapper = WikiMapper("index_enwiki-latest.db")
+    wikidata_id = mapper.wikipedia_id_to_id(3342)
+    print(wikidata_id)  # Q183
+
+
+Map Wikidata id to Wikipedia id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: python
+
+    from wikimapper import WikiMapper
+
+    mapper = WikiMapper("index_enwiki-latest.db")
+    wikipedia_ids = mapper.id_to_wikipedia_ids("Q183")
+    print(wikipedia_ids)  # [3342, 10590, 11833, 11840, ...]
+
+Mapping Wikidata id to Wikipedia id can lead to more than one result, as some pages in Wikipedia are
+redirects, all linking to the same Wikidata item.
+
 Create your own index
 ~~~~~~~~~~~~~~~~~~~~~
 
