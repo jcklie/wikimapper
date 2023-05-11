@@ -94,3 +94,58 @@ def test_id_to_wikipedia_ids(bavarian_wiki_mapper, wikidata_id: str, expected: L
     wikipedia_ids = mapper.id_to_wikipedia_ids(wikidata_id)
 
     assert set(wikipedia_ids) == set(expected)
+
+
+@pytest.mark.parametrize(
+    "wikipedia_id, expected",
+    [
+        (24520, "Stoaboog"),
+        (8535, "Wechslkrod"),
+        (32218, None),  # Wechslkrod, but namespace 1, so cannot be in the database
+        (32176, "Wickiana"),
+        (32252, "Ulrich_Zwingli"),
+        (32311, "Jingstes_Gricht"),
+        (2143, "Sånkt_Johann_im_Pongau"),
+        (2217, "Quadrátkilometa"),
+        (4209, "D'_boarische_Woocha"),
+        (1997, "Brezn"),
+        (5740, None),  # Brezn, but namespace 1, so cannot be in the database
+        (24100, "Brezel"),
+        (28193, "Brezen"),
+        (105208, "Vulkanologie"),
+        (105288, "Vuikanologie"),
+    ]
+)
+def test_wikipedia_id_to_title(bavarian_wiki_mapper, wikipedia_id: int, expected: str):
+    mapper = bavarian_wiki_mapper
+
+    title = mapper.wikipedia_id_to_title(wikipedia_id)
+
+    assert title == expected
+
+
+@pytest.mark.parametrize(
+    "title, expected",
+    [
+        ("Stoaboog", 24520),
+        ("Wechslkrod", 8535),
+        ("Wickiana", 32176),
+        ("Ulrich_Zwingli", 32252),
+        ("Jingstes_Gricht", 32311),
+        ("Sånkt_Johann_im_Pongau", 2143),
+        ("Quadrátkilometa", 2217),
+        ("D'_boarische_Woocha", 4209),
+        ("Brezn", 1997),
+        ("Brezel", 24100),
+        ("Brezen", 28193),
+        ("Vulkanologie", 105208),
+        ("Vuikanologie", 105288),
+        ("xxxxxxxxxx", None),
+    ]
+)
+def test_wikipedia_id_to_title(bavarian_wiki_mapper, title: str, expected: int):
+    mapper = bavarian_wiki_mapper
+
+    wikipedia_id = mapper.title_to_wikipedia_id(title)
+
+    assert wikipedia_id == expected

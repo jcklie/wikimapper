@@ -114,3 +114,46 @@ class WikiMapper:
         results = c.fetchall()
 
         return [e[0] for e in results]
+
+    def wikipedia_id_to_title(self, wikipedia_id: int) -> Optional[str]:
+        """Given a Wikipedia ID (in other words Page ID), returns the corresponding page title.
+
+        Args:
+            wikipedia_id (int): The Wikipedia ID to map, e.g. `11867`
+
+        Returns:
+            Optional[str]: If a mapping found for `wikipedia_id`, then return
+                           it, else return `None`.
+        """
+
+        c = self.conn.execute(
+            "SELECT wikipedia_title FROM mapping WHERE wikipedia_id=?", (wikipedia_id,)
+        )
+        result = c.fetchone()
+
+        if result is not None and result[0] is not None:
+            return result[0]
+        else:
+            return None
+
+    def title_to_wikipedia_id(self, page_title: str) -> Optional[int]:
+        """Given a Wikipedia page title, returns the corresponding Wikipedia id.
+
+        Args:
+            page_title (str): The Wikipedia page title to map, e.g. `Germany`
+
+        Returns:
+            Optional[str]: If a mapping found for `page_title`, then return
+                           it, else return `None`.
+        """
+
+        # no need for `DISTINCT` as `wikipedia_id` is a PRIMARY KEY, thus we have no duplicates there
+        c = self.conn.execute(
+            "SELECT wikipedia_id FROM mapping WHERE wikipedia_title=?", (page_title,)
+        )
+        result = c.fetchone()
+
+        if result is not None and result[0] is not None:
+            return result[0]
+        else:
+            return None

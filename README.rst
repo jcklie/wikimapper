@@ -131,6 +131,28 @@ Map Wikidata id to Wikipedia id
 Mapping Wikidata id to Wikipedia id can lead to more than one result, as some pages in Wikipedia are
 redirects, all linking to the same Wikidata item.
 
+Map Wikipedia id to Wikipedia page title
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: python
+
+    from wikimapper import WikiMapper
+
+    mapper = WikiMapper("index_enwiki-latest.db")
+    page_title = mapper.wikipedia_id_to_title(3342)
+    print(page_title)  # Bundesrepublik_Deutschland
+
+Map Wikipedia page title to Wikipedia id
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code:: python
+
+    from wikimapper import WikiMapper
+
+    mapper = WikiMapper("index_enwiki-latest.db")
+    wikipedia_id = mapper.title_to_wikipedia_id("Germany")
+    print(wikipedia_id)  # 11867
+
 Create your own index
 ~~~~~~~~~~~~~~~~~~~~~
 
