@@ -106,7 +106,7 @@ Mapping id to title can lead to more than one result, as some pages in Wikipedia
 redirects, all linking to the same Wikidata item.
 
 Map Wikipedia id to Wikidata id
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python
 
@@ -118,7 +118,7 @@ Map Wikipedia id to Wikidata id
 
 
 Map Wikidata id to Wikipedia id
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python
 
@@ -132,7 +132,7 @@ Mapping Wikidata id to Wikipedia id can lead to more than one result, as some pa
 redirects, all linking to the same Wikidata item.
 
 Map Wikipedia id to Wikipedia page title
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python
 
@@ -143,7 +143,7 @@ Map Wikipedia id to Wikipedia page title
     print(page_title)  # Bundesrepublik_Deutschland
 
 Map Wikipedia page title to Wikipedia id
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code:: python
 
