@@ -17,7 +17,7 @@ DESCRIPTION = "Mapping Wikidata and Wikipedia entities to each other"
 HOMEPAGE = "https://github.com/jcklie/wikimapper"
 EMAIL = "git@mrklie.com"
 AUTHOR = "Jan-Christoph Klie"
-REQUIRES_PYTHON = ">=3.5.0"
+REQUIRES_PYTHON = ">=3.6"
 
 install_requires=[]
 
@@ -135,7 +135,6 @@ setup(
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python :: 3 :: Only",
-        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Wiki",

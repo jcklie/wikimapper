@@ -159,7 +159,9 @@ Create your own index
 While some indices are precomupted, it is sometimes useful to create your own. The
 following section describes the steps need. Regarding creation speed: The index creation
 code works, but is not optimized. It takes around 10 minutes on my Notebook (T480s)
-to create it for English Wikipedia if the data is already downloaded.
+to create it for English Wikipedia if the data is already downloaded. With the English
+dump of October 2026 (19.3 million pages), it takes around 8 minutes on an ASUS ROG
+Zephyrus G14 (GA403UV), most of which is spent on resolving the redirects.
 
 **1. Download the data**
 
@@ -223,7 +225,7 @@ line.
         url2id              Map a Wikipedia URL to a Wikidata ID.
         id2titles           Map a Wikidata ID to one or more Wikipedia titles.
 
-    optional arguments:
+    options:
       -h, --help            show this help message and exit
       --version             show program's version number and exit
 
@@ -238,7 +240,7 @@ created and activated by
 
 ::
 
-    virtualenv venv --python=python3 --no-site-packages
+    virtualenv venv --python=python3
     source venv/bin/activate
     pip install -e ".[test, dev, doc]"
 
@@ -248,21 +250,16 @@ The tests can be run in the current environment by invoking
 
     make test
 
-or in a clean environment via
-
-::
-
-    tox
-
 FAQ
 ---
 
 How does the parsing of the dump work?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-`jamesmishra <https://github.com/jamesmishra/mysqldump-to-csv>`__ has noticed that
-SQL dumps from Wikipedia almost look like CSV. He provides some basic functions
-to parse insert statements into tuples. We then use the Wikipedia SQL page
+The SQL dumps consist of ``INSERT`` statements. The rows of these statements are
+matched with regular expressions, which works for dumps that put all rows on one
+line (older dumps) as well as for dumps that put every row on its own line (dumps
+since 2025). We then use the Wikipedia SQL page
 dump to get the mapping between title and internal id, page props to get
 the Wikidata ID for a title and then the redirect dump in order to fill
 titles that are only redirects and do not have an entry in the page props table.

@@ -9,6 +9,3 @@ isort:
 	isort --profile black wikimapper/ tests/
 
 format: black isort
-
-html:
-	cd docs && make html

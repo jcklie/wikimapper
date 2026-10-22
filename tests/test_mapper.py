@@ -143,7 +143,7 @@ def test_wikipedia_id_to_title(bavarian_wiki_mapper, wikipedia_id: int, expected
         ("xxxxxxxxxx", None),
     ]
 )
-def test_wikipedia_id_to_title(bavarian_wiki_mapper, title: str, expected: int):
+def test_title_to_wikipedia_id(bavarian_wiki_mapper, title: str, expected: int):
     mapper = bavarian_wiki_mapper
 
     wikipedia_id = mapper.title_to_wikipedia_id(title)
